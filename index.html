@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İsraf ve Su Tasarrufu Dersi</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Kütüphaneler -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Video Bölümü -->
+        <section id="video-section" class="active-section">
+            <h2>İsraf Nedir?</h2>
+            <div class="video-container">
+                <video id="intro-video" controls>
+                    <source src="assets/intro.mp4" type="video/mp4">
+                    Tarayıcınız video oynatmayı desteklemiyor.
+                </video>
+            </div>
+            <button id="video-next-btn" class="next-btn" onclick="showSection('pdf-section')" disabled>Devam Et</button>
+        </section>
+
+        <!-- PDF Bölümü -->
+        <section id="pdf-section" class="hidden-section">
+            <h2>İsraf Nedir?</h2>
+            <div class="pdf-container">
+                <div id="flipbook">
+                    <div class="hard">Kapak</div>
+                    <!-- PDF sayfaları buraya dinamik olarak yüklenecek -->
+                </div>
+                <div class="flipbook-controls">
+                    <button onclick="previousPage()">Önceki Sayfa</button>
+                    <span id="page-num"></span> / <span id="page-count"></span>
+                    <button onclick="nextPage()">Sonraki Sayfa</button>
+                </div>
+            </div>
+            <button class="next-btn" onclick="showSection('audio-section')">Devam Et</button>
+        </section>
+
+        <!-- Sesli Hikaye Bölümü -->
+        <section id="audio-section" class="hidden-section">
+            <h2>Minik Damlanın Büyük Yolculuğu</h2>
+            <div class="audio-container">
+                <audio id="story-audio" controls>
+                    <source src="assets/story.mp3" type="audio/mpeg">
+                    Tarayıcınız ses oynatmayı desteklemiyor.
+                </audio>
+            </div>
+            <button class="next-btn" onclick="showSection('evaluation-section')">Devam Et</button>
+        </section>
+
+        <!-- Değerlendirme Formu -->
+        <section id="evaluation-section" class="hidden-section">
+            <h2>Ölçme ve Değerlendirme</h2>
+            <form id="evaluation-form">
+                <div class="form-group">
+                    <label for="name">Adınız Soyadınız:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="understanding">Konuyu ne kadar anladınız? (1-5):</label>
+                    <input type="number" id="understanding" name="understanding" min="1" max="5" required>
+                </div>
+                <div class="form-group">
+                    <label for="feedback">Geri bildiriminiz:</label>
+                    <textarea id="feedback" name="feedback" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Gönder</button>
+            </form>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
